@@ -10,15 +10,32 @@ public class DemSoLanXuatHien {
         System.out.println("Nhap chuoi");
         String chuoi = input.nextLine();
         chuoi.toUpperCase();
+        String[] arrWord = chuoi.split("\\s+");
         TreeMap<String, Integer> map = new TreeMap<>();
-        for (int i = 0; i < chuoi.length(); i++) {
-            String charKey = chuoi.substring(i,(i+1));
+        map.put(arrWord[0], 1);
+        for (int i = 1; i < arrWord.length; i++) {
+            String keyWord = "";
+            int flag = 0;
+            if (!arrWord[i].equals(" ")) {
+                keyWord = arrWord[i];
+                keyWord.trim();
+            } else {
+                continue;
+            }
             Set<String> keySet = map.keySet();
-            for (String key: keySet){
-                if (charKey == key){
-                    map.put()
+            for (String key : keySet) {
+                if (keyWord.equals(key)) {
+                    map.put(keyWord, (map.get(keyWord) + 1));
+                    flag ++;
                 }
             }
+            if (flag == 0) {
+                map.put(keyWord, 1);
+            }
+        }
+        Set<String> keySet = map.keySet();
+        for (String key : keySet) {
+            System.out.println("Key:" + key + ":" + map.get(key));
         }
     }
 }
