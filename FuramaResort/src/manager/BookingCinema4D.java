@@ -1,4 +1,7 @@
-package models;
+package manager;
+
+import common.WriteAndReadFileCustomerCSV;
+import models.Customer;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

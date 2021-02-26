@@ -1,4 +1,6 @@
-package models;
+package common;
+
+import models.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

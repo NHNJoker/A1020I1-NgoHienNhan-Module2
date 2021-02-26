@@ -1,4 +1,6 @@
-package models;
+package common;
+
+import models.Customer;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

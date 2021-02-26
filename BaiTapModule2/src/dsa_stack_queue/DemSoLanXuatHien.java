@@ -14,14 +14,9 @@ public class DemSoLanXuatHien {
         TreeMap<String, Integer> map = new TreeMap<>();
         map.put(arrWord[0], 1);
         for (int i = 1; i < arrWord.length; i++) {
-            String keyWord = "";
+            String keyWord = arrWord[i];
+            keyWord.trim();
             int flag = 0;
-            if (!arrWord[i].equals(" ")) {
-                keyWord = arrWord[i];
-                keyWord.trim();
-            } else {
-                continue;
-            }
             Set<String> keySet = map.keySet();
             for (String key : keySet) {
                 if (keyWord.equals(key)) {
