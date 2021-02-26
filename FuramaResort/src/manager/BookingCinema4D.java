@@ -9,7 +9,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class BookingCinema4D {
-    private static void booking(Queue<String> myQueueBookingCinema) {
+    public static void booking(Queue<String> myQueueBookingCinema) {
         Scanner input = new Scanner(System.in);
         ArrayList<Customer> customerArrayList = WriteAndReadFileCustomerCSV.readFile();
         System.out.println("List customer:");
@@ -20,25 +20,13 @@ public class BookingCinema4D {
         }
         System.out.println("Enter customer:");
         int indexCustomer = input.nextInt();
-        myQueueBookingCinema.add(customerArrayList.get((indexCustomer - 1)).getNameCus());
+        myQueueBookingCinema.offer(customerArrayList.get((indexCustomer - 1)).getNameCus());
     }
 
-    private static void displayListBookingCinema(Queue<String> myQueueBookingCinema) {
+    public static void displayListBookingCinema(Queue<String> myQueueBookingCinema) {
         System.out.println("List booking cinema:");
-        for (String elementBooking : myQueueBookingCinema) {
-            System.out.println(elementBooking);
+        while (!myQueueBookingCinema.isEmpty()){
+            System.out.println(myQueueBookingCinema.poll());
         }
-        myQueueBookingCinema.clear();
-    }
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        Queue<String> myQueueBookingCinema = new LinkedList<>();
-        System.out.println("Enter max num of ticket");
-        int maxOfTicket = input.nextInt();
-        for (int i = 1; i <= maxOfTicket; i++) {
-            booking(myQueueBookingCinema);
-        }
-        displayListBookingCinema(myQueueBookingCinema);
     }
 }

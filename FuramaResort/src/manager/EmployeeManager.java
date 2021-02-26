@@ -73,7 +73,7 @@ public class EmployeeManager {
         }
     }
 
-    private static void addNewEmployee() {
+    public static void addNewEmployee() {
         Scanner input = new Scanner(System.in);
         ArrayList<Employee> employeeArrayList = new ArrayList<Employee>();
         for (int i = 1; i <= 10; i++) {
@@ -142,9 +142,5 @@ public class EmployeeManager {
             employeeArrayList.add(employee);
         }
         WriteAndReadFileEmployeeCSV.writeFile(employeeArrayList);
-    }
-
-    public static void main(String[] args) {
-        addNewEmployee();
     }
 }

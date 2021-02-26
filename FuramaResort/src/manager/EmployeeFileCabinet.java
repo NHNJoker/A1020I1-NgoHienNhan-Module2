@@ -8,14 +8,14 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class EmployeeFileCabinet {
-    private static void addEmployeeInFileCabinet(Stack<Employee> myEmployeeFileCabinet) {
+    public static void addEmployeeInFileCabinet(Stack<Employee> myEmployeeFileCabinet) {
         ArrayList<Employee> employeeArrayList = WriteAndReadFileEmployeeCSV.readFile();
         for (Employee employee : employeeArrayList) {
             myEmployeeFileCabinet.push(employee);
         }
     }
 
-    private static void searchEmployee(Stack<Employee> myEmployeeFileCabinet) {
+    public static void searchEmployee(Stack<Employee> myEmployeeFileCabinet) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter name of employee:");
         String nameOfEmployee = input.nextLine();
@@ -29,11 +29,5 @@ public class EmployeeFileCabinet {
         if (count == 0){
             System.out.println("No employee found "+nameOfEmployee);
         }
-    }
-
-    public static void main(String[] args) {
-        Stack<Employee> myEmployeeFileCabinet = new Stack<>();
-        addEmployeeInFileCabinet(myEmployeeFileCabinet);
-        searchEmployee(myEmployeeFileCabinet);
     }
 }
