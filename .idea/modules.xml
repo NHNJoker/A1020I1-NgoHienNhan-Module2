@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/A1020I1-NgoHienNhan-Module2.iml" filepath="$PROJECT_DIR$/.idea/A1020I1-NgoHienNhan-Module2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BaiTapModule2/BaiTapModule2.iml" filepath="$PROJECT_DIR$/BaiTapModule2/BaiTapModule2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FuramaResort/FuramaResort.iml" filepath="$PROJECT_DIR$/FuramaResort/FuramaResort.iml" />
+    </modules>
+  </component>
+</project>
