@@ -1,6 +1,1 @@
-Name,Age,Address,ID,Date of birth,Num of phone,Email,Level,Work position,Salary
-Hien,48,0,0,11/06/1973,0,0,Intermediate,Receptionist,0,Nam
-Ba,45,0,0,11/06/1976,0,0,Intermediate,Receptionist,0,Nu
-Nhan,22,0,0,11/06/1999,0,0,Intermediate,Receptionist,0,Nam
-Duyen,20,0,0,03/04/2001,0,0,Intermediate,Receptionist,0,Nu
-Dung,12,0,0,03/05/2009,0,0,Intermediate,Receptionist,0,Nu
+Name,Age,Gender,Date of birth

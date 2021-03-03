@@ -11,8 +11,7 @@ import java.util.ArrayList;
 public class WriteAndReadFileEmployeeCSV {
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
-    private static final String HEADER = "Name,Age,Address,ID,Date of birth,Num of phone,Email,Level" +
-            ",Work position,Salary";
+    private static final String HEADER = "Name,Age,Gender,Date of birth";
 
     public static void writeFile(ArrayList<Employee> employeeArrayList) {
         FileWriter fileWriter = null;
@@ -25,23 +24,9 @@ public class WriteAndReadFileEmployeeCSV {
                 fileWriter.append(COMMA_DELIMITER);
                 fileWriter.append(String.valueOf(employee.getAge()));
                 fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(employee.getAddressOfEmployee());
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(String.valueOf(employee.getId()));
+                fileWriter.append(employee.getGender());
                 fileWriter.append(COMMA_DELIMITER);
                 fileWriter.append(employee.getDateOfBirth());
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(String.valueOf(employee.getNumOfPhone()));
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(employee.getEmail());
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(employee.getLevel());
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(employee.getWorkPosition());
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(String.valueOf(employee.getSalary()));
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(employee.getGender());
                 fileWriter.append(NEW_LINE_SEPARATOR);
             }
         } catch (Exception exception) {
@@ -56,14 +41,15 @@ public class WriteAndReadFileEmployeeCSV {
         }
     }
 
-    public static ArrayList<Employee> readFile(){
+
+    public static ArrayList<Employee> readFile() {
         BufferedReader br = null;
         ArrayList<Employee> employeeList = new ArrayList<Employee>();
         Path path = Paths.get("src/dsa_stack_queue/Employee.csv");
-        if (!Files.exists(path)){
+        if (!Files.exists(path)) {
             try {
                 FileWriter fileWriter = new FileWriter("src/dsa_stack_queue/Employee.csv");
-            }catch (Exception exception){
+            } catch (Exception exception) {
                 System.out.println(exception.getMessage());
             }
         }
@@ -78,20 +64,13 @@ public class WriteAndReadFileEmployeeCSV {
                 Employee employee = new Employee();
                 employee.setNameOfEmployee(splitData[0]);
                 employee.setAge(splitData[1]);
-                employee.setAddressOfEmployee(splitData[2]);
-                employee.setId(Integer.parseInt(splitData[3]));
-                employee.setDateOfBirth(splitData[4]);
-                employee.setNumOfPhone(Integer.parseInt(splitData[5]));
-                employee.setEmail(splitData[6]);
-                employee.setLevel(splitData[7]);
-                employee.setWorkPosition(splitData[8]);
-                employee.setSalary(Integer.parseInt(splitData[9]));
-                employee.setGender(splitData[10]);
+                employee.setGender(splitData[2]);
+                employee.setDateOfBirth(splitData[3]);
                 employeeList.add(employee);
             }
-        }catch (Exception exception){
+        } catch (Exception exception) {
             System.out.println(exception.getMessage());
-        }finally {
+        } finally {
             try {
                 assert br != null;
                 br.close();
