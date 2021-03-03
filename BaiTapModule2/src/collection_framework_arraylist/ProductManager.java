@@ -1,6 +1,4 @@
-package collection_framework;
-
-import com.sun.xml.internal.bind.v2.model.core.ID;
+package collection_framework_arraylist;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +23,7 @@ public class ProductManager {
     public static void editProduct() {
         ArrayList<Product> productArrayList = WriteAndReadFileProductCSV.readFile();
         Scanner input = new Scanner(System.in);
-        System.out.println("Nhap ten san pham muon sua:");
+        System.out.println("Nhap ID san pham muon sua:");
         String IDProduct = input.nextLine();
         boolean check = false;
         for (Product product : productArrayList) {
@@ -69,12 +67,23 @@ public class ProductManager {
         }
     }
 
-    public static void sortProduct(){
+    public static void sortUpProduct(){
         ArrayList<Product> productArrayList = WriteAndReadFileProductCSV.readFile();
         Collections.sort(productArrayList, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
                 return o1.getPriceProduct()-o2.getPriceProduct();
+            }
+        });
+        WriteAndReadFileProductCSV.writeFile(productArrayList);
+    }
+
+    public static void sortDownProduct(){
+        ArrayList<Product> productArrayList = WriteAndReadFileProductCSV.readFile();
+        Collections.sort(productArrayList, new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                return o2.getPriceProduct()-o1.getPriceProduct();
             }
         });
         WriteAndReadFileProductCSV.writeFile(productArrayList);

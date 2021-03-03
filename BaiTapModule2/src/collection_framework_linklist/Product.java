@@ -1,4 +1,4 @@
-package collection_framework;
+package collection_framework_linklist;
 
 public class Product {
     private String nameOfProduct;

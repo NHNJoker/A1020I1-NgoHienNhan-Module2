@@ -1,4 +1,4 @@
-package collection_framework;
+package collection_framework_linklist;
 
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ public class ProductMain {
         Scanner input = new Scanner(System.in);
         while (check) {
             System.out.println("1. add product\n2. edit product\n3. remove product\n4. display\n5. search\n" +
-                    "6. sort\n7. exit");
+                    "6. sort up\n7. sort down\n8. exit");
             int choose = input.nextInt();
             switch (choose) {
                 case 1:
@@ -27,9 +27,12 @@ public class ProductMain {
                     ProductManager.searchProduct();
                     break;
                 case 6:
-                    ProductManager.sortProduct();
+                    ProductManager.sortUpProduct();
                     break;
                 case 7:
+                    ProductManager.sortDownProduct();
+                    break;
+                case 8:
                     check = false;
                     break;
             }
