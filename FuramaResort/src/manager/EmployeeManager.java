@@ -1,18 +1,18 @@
 package manager;
 
+import common.ObjectFurama;
+import common.WriteAndReadFileCSV;
 import common.WriteAndReadFileEmployeeCSV;
+import models.Customer;
 import models.Employee;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class EmployeeManager {
     public static void displayEmployee() {
         HashMap<Integer, String> employeeHashMap = new HashMap<>();
-        ArrayList<models.Employee> employeeList = WriteAndReadFileEmployeeCSV.readFile();
+        ArrayList<models.Employee> employeeList = WriteAndReadFileCSV.readFileEmployee();
         int key = 1;
         for (models.Employee employee : employeeList) {
             employeeHashMap.put(key, String.valueOf(employee.toString()));
@@ -141,6 +141,13 @@ public class EmployeeManager {
                     Integer.parseInt(employee.getDateOfBirth().substring(6, 10))));
             employeeArrayList.add(employee);
         }
-        WriteAndReadFileEmployeeCSV.writeFile(employeeArrayList);
+        WriteAndReadFileCSV.writeFile(listStringEmployee(employeeArrayList), ObjectFurama.EMPLOYEE);
+    }
+    public static List<String> listStringEmployee(ArrayList<Employee> employeeArrayList) {
+        List<String> stringList = new ArrayList<>();
+        for (Employee employee : employeeArrayList) {
+            stringList.add(employee.toString());
+        }
+        return stringList;
     }
 }

@@ -51,18 +51,17 @@ public class Villa extends Services {
 
     @Override
     public String toString() {
-        return "Villa{" +
-                "id="+getId()+'\''+
-                "serviceName="+getServiceName()+'\''+
-                "areaUsed="+getAreaUsed()+'\''+
-                "rentalCost="+getRentalCosts()+'\''+
-                "maxPeople="+getMaxPeople()+'\''+
-                "rentalType="+getRentalType()+'\''+
-                "typeOfRoom='" + typeOfRoom + '\'' +
-                ", otherAmenities='" + otherAmenities + '\'' +
-                ", acreagePool=" + acreagePool +
-                ", numOfFloor=" + numOfFloor +
-                '}';
+        return getId() + ',' +
+                getServiceName() + ',' +
+                getAreaUsed() + ',' +
+                getRentalCosts() + ',' +
+                getMaxPeople() + ',' +
+                getRentalType() + ',' +
+                typeOfRoom + ',' +
+                otherAmenities + ',' +
+                acreagePool + ',' +
+                numOfFloor;
+
     }
 
     public void showInfor() {

@@ -1,19 +1,21 @@
 package manager;
 
-import common.WriteAndReadFileBookingCSV;
-import common.WriteAndReadFileCustomerCSV;
-import common.WriteAndReadFileServiceCSV;
+import common.ObjectFurama;
+import common.WriteAndReadFileCSV;
 import models.*;
 import models.Customer;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Booking {
+    private static final String COMMA = ",";
+
     public static void addNewBooking() {
         Scanner input = new Scanner(System.in);
         ArrayList<models.Customer> listBooking = new ArrayList<models.Customer>();
-        ArrayList<models.Customer> arrayList = WriteAndReadFileCustomerCSV.readFile();
+        ArrayList<models.Customer> arrayList = WriteAndReadFileCSV.readFileCustomer();
         int i = 1;
         for (models.Customer customer : arrayList) {
             System.out.println(i + ". " + customer.getNameCus());
@@ -29,9 +31,7 @@ public class Booking {
         switch (choose) {
             case 1:
                 ArrayList<Services> showListDataVilla = new ArrayList<Services>();
-                listBooking = WriteAndReadFileBookingCSV.readFile();
-                showListDataVilla = WriteAndReadFileServiceCSV.readFileCSV("src/Data/Villa.csv",
-                        "Villa");
+                showListDataVilla = WriteAndReadFileCSV.readFileVilla();
                 for (Services services : showListDataVilla) {
                     System.out.println(numOder + ". " + ((Villa) services).getId() + "," + ((Villa) services).getServiceName());
                     numOder++;
@@ -41,13 +41,11 @@ public class Booking {
                 Villa villa = (Villa) showListDataVilla.get(indexService);
                 customer.setUseService(villa);
                 listBooking.add(customer);
-                WriteAndReadFileBookingCSV.writeFile(listBooking);
+                WriteAndReadFileCSV.writeFile(listStringBooking(listBooking), ObjectFurama.BOOKING);
                 break;
             case 2:
-                listBooking = WriteAndReadFileBookingCSV.readFile();
                 ArrayList<Services> showListDataHouse = new ArrayList<Services>();
-                showListDataHouse = WriteAndReadFileServiceCSV.readFileCSV("src/Data/House.csv",
-                        "House");
+                showListDataHouse = WriteAndReadFileCSV.readFileHouse();
                 for (Services services : showListDataHouse) {
                     System.out.println(numOder + ". " + ((House) services).getServiceName());
                     numOder++;
@@ -57,13 +55,11 @@ public class Booking {
                 House house = (House) showListDataHouse.get(indexServiceHouse);
                 customer1.setUseService(house);
                 listBooking.add(customer1);
-                WriteAndReadFileBookingCSV.writeFile(listBooking);
+                WriteAndReadFileCSV.writeFile(listStringBooking(listBooking), ObjectFurama.BOOKING);
                 break;
             case 3:
-                listBooking = WriteAndReadFileBookingCSV.readFile();
                 ArrayList<Services> showListDataRoom = new ArrayList<Services>();
-                showListDataRoom = WriteAndReadFileServiceCSV.readFileCSV("src/Data/Room.csv",
-                        "Room");
+                showListDataRoom = WriteAndReadFileCSV.readFileRoom();
                 for (Services services : showListDataRoom) {
                     System.out.println(numOder + ". " + ((Room) services).getServiceName());
                     numOder++;
@@ -73,9 +69,17 @@ public class Booking {
                 Room room = (Room) showListDataRoom.get(indexServiceRoom);
                 customer2.setUseService(room);
                 listBooking.add(customer2);
-                WriteAndReadFileBookingCSV.writeFile(listBooking);
+                WriteAndReadFileCSV.writeFile(listStringBooking(listBooking),ObjectFurama.BOOKING);
                 break;
         }
     }
 
+    public static List<String> listStringBooking(ArrayList<Customer> bookingArrList) {
+        List<String> stringList = new ArrayList<>();
+        for (Customer booking : bookingArrList) {
+            stringList.add(booking.getId() + COMMA + booking.getNameCus() + COMMA + booking.getUseService().getId() +
+                    COMMA + booking.getUseService().getServiceName());
+        }
+        return stringList;
+    }
 }

@@ -21,9 +21,17 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "nameOfEmployee='" + nameOfEmployee + '\'' +
-                ", age=" + age +
-                ", addressOfEmployee='" + addressOfEmployee + '\'';
+        return
+                nameOfEmployee + ',' +
+                        age + ',' +
+                        dateOfBirth + ',' +
+                        email + ',' +
+                        id +','+
+                        numOfPhone +','+
+                        level + ',' +
+                        workPosition + ',' +
+                        salary +','+
+                        addressOfEmployee;
     }
 
     public String getNameOfEmployee() {

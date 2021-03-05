@@ -3,6 +3,7 @@ package common;
 import models.Customer;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.nio.file.Files;
@@ -17,11 +18,17 @@ public class WriteAndReadFileCustomerCSV {
 
     public static void writeFile(ArrayList<Customer> listCustomer) {
         FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter =null;
         try {
-            fileWriter = new FileWriter("src/Data/Customer.csv");
+            fileWriter = new FileWriter("src/Data/Customer.csv",true);
+//            bufferedWriter= new BufferedWriter(fileWriter);
+
             fileWriter.append(HEADER);
             fileWriter.append(NEW_LINE_SEPARATOR);
             for (Customer customer : listCustomer) {
+//                bufferedWriter.write();
+//                bufferedWriter.newLine();
+//                bufferedWriter.close();
                 fileWriter.append(customer.getNameCus());
                 fileWriter.append(COMMA_DELIMITER);
                 fileWriter.append(customer.getDateOfBirth());

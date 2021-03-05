@@ -1,5 +1,7 @@
 package manager;
 
+import common.ObjectFurama;
+import common.WriteAndReadFileCSV;
 import common.WriteAndReadFileCustomerCSV;
 import models.Customer;
 
@@ -9,12 +11,19 @@ import java.util.regex.Pattern;
 public class CustomerManager {
     public static void addNewCustomer() {
         ArrayList<models.Customer> customerArrayList = new ArrayList<models.Customer>();
-        customerArrayList = WriteAndReadFileCustomerCSV.readFile();
         models.Customer customerObj = new models.Customer();
         addCustomer(customerObj);
         userException(customerObj);
         customerArrayList.add(customerObj);
-        WriteAndReadFileCustomerCSV.writeFile(customerArrayList);
+        WriteAndReadFileCSV.writeFile(listStringCustomer(customerArrayList), ObjectFurama.CUSTOMER);
+    }
+
+    public static List<String> listStringCustomer(ArrayList<Customer> customerArrayList) {
+        List<String> stringList = new ArrayList<>();
+        for (Customer customer : customerArrayList) {
+            stringList.add(customer.toString());
+        }
+        return stringList;
     }
 
     public static void addCustomer(Customer customer) {
@@ -50,12 +59,13 @@ public class CustomerManager {
                 customer.setTypeOfCus("Member");
                 break;
         }
+        input.nextLine();
         System.out.println("Enter address:");
         customer.setAddress(input.nextLine());
     }
 
     public static void showInformationCustomer() {
-        ArrayList<Customer> customerArrayList = WriteAndReadFileCustomerCSV.readFile();
+        ArrayList<Customer> customerArrayList = WriteAndReadFileCSV.readFileCustomer();
         Collections.sort(customerArrayList, new Comparator<Customer>() {
             @Override
             public int compare(Customer o1, Customer o2) {
@@ -131,6 +141,5 @@ public class CustomerManager {
                 customer.setDateOfBirth(input.nextLine());
             }
         }
-
     }
 }

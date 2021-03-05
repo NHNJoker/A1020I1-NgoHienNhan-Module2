@@ -94,20 +94,28 @@ public class Customer {
     public void setUseService(Services useService) {
         this.useService = useService;
     }
+
     @Override
     public String toString() {
-        return "nameCus='" + nameCus + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", id=" + id +
-                ", email='" + email + '\'' +
-                ", typeOfCus='" + typeOfCus + '\'' +
-                ", address='" + address + '\'' +
-                ", useService=" + useService +
-                '}';
+        return nameCus + ',' +
+                dateOfBirth + ','
+                + gender + ',' +
+                +id + ','
+                + email + ','
+                + typeOfCus + ','
+                + address + ','
+                + useService
+                ;
     }
 
     public void showInfor(Customer customer) {
+        System.out.println(customer.toString());
+    }
+
+    public static void main(String[] args) {
+        Services services = new Villa();
+        Customer customer = new Customer();
+        customer.setUseService(services);
         System.out.println(customer.toString());
     }
 }

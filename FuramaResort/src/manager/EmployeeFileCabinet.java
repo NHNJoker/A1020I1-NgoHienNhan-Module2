@@ -1,5 +1,6 @@
 package manager;
 
+import common.WriteAndReadFileCSV;
 import common.WriteAndReadFileEmployeeCSV;
 import models.Employee;
 
@@ -9,7 +10,7 @@ import java.util.Stack;
 
 public class EmployeeFileCabinet {
     public static void addEmployeeInFileCabinet(Stack<Employee> myEmployeeFileCabinet) {
-        ArrayList<Employee> employeeArrayList = WriteAndReadFileEmployeeCSV.readFile();
+        ArrayList<Employee> employeeArrayList = WriteAndReadFileCSV.readFileEmployee();
         for (Employee employee : employeeArrayList) {
             myEmployeeFileCabinet.push(employee);
         }

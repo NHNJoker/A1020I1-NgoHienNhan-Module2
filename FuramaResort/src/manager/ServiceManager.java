@@ -1,10 +1,13 @@
 package manager;
 
+import common.ObjectFurama;
+import common.WriteAndReadFileCSV;
 import common.WriteAndReadFileServiceCSV;
 import controllers.MainController;
 import models.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
@@ -102,31 +105,27 @@ public class ServiceManager {
             switch (choose) {
                 case 1:
                     ArrayList<Services> showListDataVilla = new ArrayList<Services>();
-                    showListDataVilla = WriteAndReadFileServiceCSV.readFileCSV("src/Data/Villa.csv",
-                            "Villa");
+                    showListDataVilla = WriteAndReadFileCSV.readFileVilla();
                     for (Services services : showListDataVilla) {
                         ((Villa) services).showInfor();
                     }
                     break;
                 case 2:
                     ArrayList<Services> showListDataHouse = new ArrayList<Services>();
-                    showListDataHouse = WriteAndReadFileServiceCSV.readFileCSV("src/Data/House.csv",
-                            "House");
+                    showListDataHouse = WriteAndReadFileCSV.readFileHouse();
                     for (Services services : showListDataHouse) {
                         ((House) services).showInfor();
                     }
                     break;
                 case 3:
                     ArrayList<Services> showListDataRoom = new ArrayList<Services>();
-                    showListDataRoom = WriteAndReadFileServiceCSV.readFileCSV("src/Data/Room.csv",
-                            "Room");
+                    showListDataRoom = WriteAndReadFileCSV.readFileRoom();
                     for (Services services : showListDataRoom) {
                         ((Room) services).showInfor();
                     }
                     break;
                 case 4:
-                    ArrayList<Services> villaNotDup = WriteAndReadFileServiceCSV.readFileCSV("src/Data/Villa.csv",
-                            "Villa");
+                    ArrayList<Services> villaNotDup = WriteAndReadFileCSV.readFileVilla();
                     TreeSet<String> treeSetVilla = new TreeSet<String>();
                     for (Services services : villaNotDup) {
                         treeSetVilla.add(((Villa) services).getServiceName());
@@ -136,8 +135,7 @@ public class ServiceManager {
                     }
                     break;
                 case 5:
-                    ArrayList<Services> houseNotDup = WriteAndReadFileServiceCSV.readFileCSV("src/Data/House.csv",
-                            "House");
+                    ArrayList<Services> houseNotDup = WriteAndReadFileCSV.readFileHouse();
                     TreeSet<String> treeSetHouse = new TreeSet<String>();
                     for (Services services : houseNotDup) {
                         treeSetHouse.add(((House) services).getServiceName());
@@ -147,8 +145,7 @@ public class ServiceManager {
                     }
                     break;
                 case 6:
-                    ArrayList<Services> roomNotDup = WriteAndReadFileServiceCSV.readFileCSV("src/Data/Room.csv",
-                            "Room");
+                    ArrayList<Services> roomNotDup =WriteAndReadFileCSV.readFileRoom();
                     TreeSet<String> treeSetRoom = new TreeSet<String>();
                     for (Services services : roomNotDup) {
                         treeSetRoom.add(((Room) services).getServiceName());
@@ -169,40 +166,57 @@ public class ServiceManager {
 
     public static void addNewRoom() {
         ArrayList<Services> listServiceRoom = new ArrayList<Services>();
-        listServiceRoom = WriteAndReadFileServiceCSV.readFileCSV("src/Data/Room.csv",
-                "Room");
         Services roomObj = new Room();
         inputInstanceServices(roomObj);
         checkValue(roomObj);
         listServiceRoom.add(roomObj);
-        WriteAndReadFileServiceCSV.writeCsvFile(listServiceRoom, "Room");
+        WriteAndReadFileCSV.writeFile(listStringRoom(listServiceRoom), ObjectFurama.ROOM);
         System.out.println("successfully added");
+    }
+
+    public static List<String> listStringRoom(ArrayList<Services> roomArrayList) {
+        List<String> stringList = new ArrayList<>();
+        for (Services room : roomArrayList) {
+            stringList.add(room.toString());
+        }
+        return stringList;
     }
 
     public static void addNewHouse() {
         ArrayList<Services> listServiceHouse = new ArrayList<Services>();
-        listServiceHouse = WriteAndReadFileServiceCSV.readFileCSV("src/Data/House.csv",
-                "House");
         Services houseObj = new House();
         inputInstanceServices(houseObj);
         checkValue(houseObj);
         listServiceHouse.add(houseObj);
-        WriteAndReadFileServiceCSV.writeCsvFile(listServiceHouse, "House");
+        WriteAndReadFileCSV.writeFile(listStringHouse(listServiceHouse),ObjectFurama.HOUSE);
         System.out.println("successfully added");
+    }
+
+    public static List<String> listStringHouse(ArrayList<Services> houseArrayList) {
+        List<String> stringList = new ArrayList<>();
+        for (Services house : houseArrayList) {
+            stringList.add(house.toString());
+        }
+        return stringList;
     }
 
     public static void addNewVilla() {
         ArrayList<Services> listServiceVilla = new ArrayList<Services>();
-        listServiceVilla = WriteAndReadFileServiceCSV.readFileCSV("src/Data/Villa.csv",
-                "Villa");
         Services villaObj = new Villa();
         inputInstanceServices(villaObj);
         checkValue(villaObj);
         listServiceVilla.add(villaObj);
-        WriteAndReadFileServiceCSV.writeCsvFile(listServiceVilla, "Villa");
+        WriteAndReadFileCSV.writeFile(listStringVilla(listServiceVilla),ObjectFurama.VILLA);
         System.out.println("successfully added");
     }
 
+    public static List<String> listStringVilla(ArrayList<Services> villaArrayList) {
+        List<String> stringList = new ArrayList<>();
+        for (Services villa : villaArrayList) {
+            stringList.add(villa.toString());
+        }
+        return stringList;
+    }
     static void checkValue(Services services) {
         Scanner input = new Scanner(System.in);
         boolean check = false;
