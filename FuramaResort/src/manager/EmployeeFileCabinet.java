@@ -8,11 +8,13 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class EmployeeFileCabinet {
-    public static void addEmployeeInFileCabinet(Stack<Employee> myEmployeeFileCabinet) {
+    public static Stack<Employee> addEmployeeInFileCabinet() {
         ArrayList<Employee> employeeArrayList = WriteAndReadFileCSV.readFileEmployee();
+        Stack<Employee> employeeStack = new Stack<>();
         for (Employee employee : employeeArrayList) {
-            myEmployeeFileCabinet.push(employee);
+            employeeStack.push(employee);
         }
+        return employeeStack;
     }
 
     public static void searchEmployee(Stack<Employee> myEmployeeFileCabinet) {
