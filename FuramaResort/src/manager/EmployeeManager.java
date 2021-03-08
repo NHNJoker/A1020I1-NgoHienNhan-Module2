@@ -2,8 +2,6 @@ package manager;
 
 import common.ObjectFurama;
 import common.WriteAndReadFileCSV;
-import common.WriteAndReadFileEmployeeCSV;
-import models.Customer;
 import models.Employee;
 
 import java.util.*;

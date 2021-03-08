@@ -1,10 +1,5 @@
 package models;
 
-import common.WriteAndReadFileCustomerCSV;
-
-import java.util.*;
-import java.util.regex.Pattern;
-
 public class Customer {
     private String nameCus;
     private String dateOfBirth;
@@ -109,13 +104,6 @@ public class Customer {
     }
 
     public void showInfor(Customer customer) {
-        System.out.println(customer.toString());
-    }
-
-    public static void main(String[] args) {
-        Services services = new Villa();
-        Customer customer = new Customer();
-        customer.setUseService(services);
         System.out.println(customer.toString());
     }
 }

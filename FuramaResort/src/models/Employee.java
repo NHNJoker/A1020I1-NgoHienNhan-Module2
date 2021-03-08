@@ -1,12 +1,5 @@
 package models;
 
-import common.WriteAndReadFileEmployeeCSV;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Scanner;
-import java.util.regex.Pattern;
-
 public class Employee {
     private String nameOfEmployee;
     private String age;

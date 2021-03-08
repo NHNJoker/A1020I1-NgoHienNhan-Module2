@@ -1,17 +1,16 @@
 package manager;
 
-import common.WriteAndReadFileCustomerCSV;
+import common.WriteAndReadFileCSV;
 import models.Customer;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
 public class BookingCinema4D {
     public static void booking(Queue<String> myQueueBookingCinema) {
         Scanner input = new Scanner(System.in);
-        ArrayList<Customer> customerArrayList = WriteAndReadFileCustomerCSV.readFile();
+        ArrayList<Customer> customerArrayList = WriteAndReadFileCSV.readFileCustomer();
         System.out.println("List customer:");
         int count = 1;
         for (Customer customer : customerArrayList) {

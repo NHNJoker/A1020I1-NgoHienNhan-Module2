@@ -1,7 +1,6 @@
 package manager;
 
 import common.WriteAndReadFileCSV;
-import common.WriteAndReadFileEmployeeCSV;
 import models.Employee;
 
 import java.util.ArrayList;
