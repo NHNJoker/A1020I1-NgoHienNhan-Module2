@@ -119,7 +119,7 @@ public class WriteAndReadFileCSV {
             customer.setNameCus(splitData[0]);
             customer.setDateOfBirth(splitData[1]);
             customer.setGender(splitData[2]);
-            customer.setId(parseInt(splitData[3]));
+            customer.setId(splitData[3]);
             customer.setEmail(splitData[4]);
             customer.setTypeOfCus(splitData[5]);
             customer.setAddress(splitData[6]);
@@ -213,7 +213,7 @@ public class WriteAndReadFileCSV {
         for (int i = 0; i < readFile("Booking").size(); i++) {
             String[] splitData = readFile("Booking").get(i).split(",");
             Customer customer = new Customer();
-            customer.setId(Integer.parseInt(splitData[0]));
+            customer.setId(splitData[0]);
             customer.setNameCus(splitData[1]);
             switch (splitData[2].substring(0, 4)) {
                 case "SVVL":

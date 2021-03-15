@@ -96,8 +96,8 @@ public class CustomerManager {
         }
         check = false;
         while (!check) {
-            if (!Pattern.matches("([A-z]|[a-z]|[.])+[@][a-z]+[.][a-z]+", customer.getEmail())) {
-                System.out.println("Email must be in the correct format abc@abc.abc.");
+            if (!Pattern.matches("([A-z]|[a-z]|[.])+[@][a-z]+([.][a-z]+){1,2}", customer.getEmail())) {
+                System.out.println("Email must be in the correct format abc@abc.abc");
                 customer.setEmail(input.nextLine());
             } else {
                 check = true;

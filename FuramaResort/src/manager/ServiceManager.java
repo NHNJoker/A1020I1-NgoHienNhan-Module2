@@ -51,31 +51,25 @@ public class ServiceManager {
         services.setServiceName(input.nextLine());
         System.out.println("Enter rental costs:");
         String rentalCostsSrt = input.nextLine();
-        if (!isNum(rentalCostsSrt)) {
-            while (!isNum(rentalCostsSrt)) {
-                System.out.println("Enter rental costs(Enter is Number):");
-                rentalCostsSrt = input.nextLine();
-            }
+        while (!isNum(rentalCostsSrt)) {
+            System.out.println("Enter rental costs(Enter is Number):");
+            rentalCostsSrt = input.nextLine();
         }
         services.setRentalCosts(Integer.parseInt(rentalCostsSrt));
         System.out.println("Enter use acreage:");
         String areaUsedStr = input.nextLine();
-        if (!isNum(areaUsedStr)) {
-            while (!isNum(areaUsedStr)) {
-                System.out.println("Enter use acreage(Enter is Number):");
-                areaUsedStr = input.nextLine();
-            }
+        while (!isNum(areaUsedStr)) {
+            System.out.println("Enter use acreage(Enter is Number):");
+            areaUsedStr = input.nextLine();
         }
         services.setAreaUsed(parseDouble(areaUsedStr));
         System.out.println("Enter rental type:");
         services.setRentalType(input.nextLine());
         System.out.println("Enter max people:");
         String maxPeopleStr = input.nextLine();
-        if (!isNum(maxPeopleStr)) {
-            while (!isNum(maxPeopleStr)) {
-                System.out.println("Enter max people(Enter is Number):");
-                maxPeopleStr = input.nextLine();
-            }
+        while (!isNum(maxPeopleStr)) {
+            System.out.println("Enter max people(Enter is Number):");
+            maxPeopleStr = input.nextLine();
         }
         services.setMaxPeople(Integer.parseInt(maxPeopleStr));
 
@@ -87,20 +81,16 @@ public class ServiceManager {
             ((Villa) services).setOtherAmenities(input.nextLine());
             System.out.println("Enter acreage pool:");
             String acreagePool = input.nextLine();
-            if (!isNum(acreagePool)) {
-                while (!isNum(acreagePool)) {
-                    System.out.println("Enter acreage pool(Enter is Number):");
-                    acreagePool = input.nextLine();
-                }
+            while (!isNum(acreagePool)) {
+                System.out.println("Enter acreage pool(Enter is Number):");
+                acreagePool = input.nextLine();
             }
             ((Villa) services).setAcreagePool(parseDouble(acreagePool));
             System.out.println("Enter num of floor:");
             String numOfFloorStr = input.nextLine();
-            if (!isNum(numOfFloorStr)) {
-                while (!isNum(numOfFloorStr)) {
-                    System.out.println("Enter num of floor(Enter is Number):");
-                    numOfFloorStr = input.nextLine();
-                }
+            while (!isNum(numOfFloorStr)) {
+                System.out.println("Enter num of floor(Enter is Number):");
+                numOfFloorStr = input.nextLine();
             }
             ((Villa) services).setNumOfFloor(Integer.parseInt(numOfFloorStr));
         } else if (services instanceof House) {
@@ -110,11 +100,9 @@ public class ServiceManager {
             ((House) services).setOtherAmenities(input.nextLine());
             System.out.println("Enter num of floor:");
             String numOfFloorStr = input.nextLine();
-            if (!isNum(numOfFloorStr)) {
-                while (!isNum(numOfFloorStr)) {
-                    System.out.println("Enter num of floor(Enter is Number):");
-                    numOfFloorStr = input.nextLine();
-                }
+            while (!isNum(numOfFloorStr)) {
+                System.out.println("Enter num of floor(Enter is Number):");
+                numOfFloorStr = input.nextLine();
             }
             ((House) services).setNumOfFloor(Integer.parseInt(numOfFloorStr));
         } else if (services instanceof Room) {
@@ -123,20 +111,16 @@ public class ServiceManager {
             serviceFreeObj.setServiceFreeName(input.nextLine());
             System.out.println("Enter unit:");
             String unitStr = input.nextLine();
-            if (!isNum(unitStr)) {
-                while (!isNum(unitStr)) {
-                    System.out.println("Enter unit(Enter is Number):");
-                    unitStr = input.nextLine();
-                }
+            while (!isNum(unitStr)) {
+                System.out.println("Enter unit(Enter is Number):");
+                unitStr = input.nextLine();
             }
             serviceFreeObj.setUnit(Integer.parseInt(unitStr));
             System.out.println("Enter price:");
             String priceStr = input.nextLine();
-            if (!isNum(priceStr)) {
-                while (!isNum(priceStr)) {
-                    System.out.println("Enter price(Enter is Number):");
-                    priceStr = input.nextLine();
-                }
+            while (!isNum(priceStr)) {
+                System.out.println("Enter price(Enter is Number):");
+                priceStr = input.nextLine();
             }
             serviceFreeObj.setPrice(Integer.parseInt(priceStr));
             ((Room) services).setServiceFreeObj(serviceFreeObj);
