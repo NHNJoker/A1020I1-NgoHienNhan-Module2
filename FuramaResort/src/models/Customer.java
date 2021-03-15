@@ -4,7 +4,7 @@ public class Customer {
     private String nameCus;
     private String dateOfBirth;
     private String gender;
-    private int id;
+    private String id;
     private String email;
     private String typeOfCus;
     private String address;
@@ -13,7 +13,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String nameCus, String dateOfBirth, String gender, int id, String email,
+    public Customer(String nameCus, String dateOfBirth, String gender, String id, String email,
                     String typeOfCus, String address, Services useService) {
         this.nameCus = nameCus;
         this.dateOfBirth = dateOfBirth;
@@ -50,11 +50,11 @@ public class Customer {
         this.gender = gender;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -95,7 +95,7 @@ public class Customer {
         return nameCus + ',' +
                 dateOfBirth + ','
                 + gender + ',' +
-                +id + ','
+                id + ','
                 + email + ','
                 + typeOfCus + ','
                 + address + ','

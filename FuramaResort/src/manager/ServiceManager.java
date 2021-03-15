@@ -11,6 +11,8 @@ import java.util.Scanner;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
 
+import static java.lang.Double.parseDouble;
+
 public class ServiceManager {
     public static void addNewServices() {
         Scanner input = new Scanner(System.in);
@@ -41,49 +43,102 @@ public class ServiceManager {
         }
     }
 
-     public static void inputInstanceServices(Services services) {
+    public static void inputInstanceServices(Services services) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter id:");
         services.setId(input.nextLine());
         System.out.println("Enter service name:");
         services.setServiceName(input.nextLine());
         System.out.println("Enter rental costs:");
-        services.setRentalCosts(input.nextInt());
+        String rentalCostsSrt = input.nextLine();
+        if (!isNum(rentalCostsSrt)) {
+            while (!isNum(rentalCostsSrt)) {
+                System.out.println("Enter rental costs(Enter is Number):");
+                rentalCostsSrt = input.nextLine();
+            }
+        }
+        services.setRentalCosts(Integer.parseInt(rentalCostsSrt));
         System.out.println("Enter use acreage:");
-        services.setAreaUsed(input.nextDouble());
-        input.nextLine();
+        String areaUsedStr = input.nextLine();
+        if (!isNum(areaUsedStr)) {
+            while (!isNum(areaUsedStr)) {
+                System.out.println("Enter use acreage(Enter is Number):");
+                areaUsedStr = input.nextLine();
+            }
+        }
+        services.setAreaUsed(parseDouble(areaUsedStr));
         System.out.println("Enter rental type:");
         services.setRentalType(input.nextLine());
         System.out.println("Enter max people:");
-        services.setMaxPeople(input.nextInt());
+        String maxPeopleStr = input.nextLine();
+        if (!isNum(maxPeopleStr)) {
+            while (!isNum(maxPeopleStr)) {
+                System.out.println("Enter max people(Enter is Number):");
+                maxPeopleStr = input.nextLine();
+            }
+        }
+        services.setMaxPeople(Integer.parseInt(maxPeopleStr));
 
         if (services instanceof Villa) {
-            input.nextLine();
+
             System.out.println("Enter type of room:");
             ((Villa) services).setTypeOfRoom(input.nextLine());
             System.out.println("Enter other amenities:");
             ((Villa) services).setOtherAmenities(input.nextLine());
             System.out.println("Enter acreage pool:");
-            ((Villa) services).setAcreagePool(input.nextDouble());
+            String acreagePool = input.nextLine();
+            if (!isNum(acreagePool)) {
+                while (!isNum(acreagePool)) {
+                    System.out.println("Enter acreage pool(Enter is Number):");
+                    acreagePool = input.nextLine();
+                }
+            }
+            ((Villa) services).setAcreagePool(parseDouble(acreagePool));
             System.out.println("Enter num of floor:");
-            ((Villa) services).setNumOfFloor(input.nextInt());
+            String numOfFloorStr = input.nextLine();
+            if (!isNum(numOfFloorStr)) {
+                while (!isNum(numOfFloorStr)) {
+                    System.out.println("Enter num of floor(Enter is Number):");
+                    numOfFloorStr = input.nextLine();
+                }
+            }
+            ((Villa) services).setNumOfFloor(Integer.parseInt(numOfFloorStr));
         } else if (services instanceof House) {
-            input.nextLine();
             System.out.println("Enter type of room:");
             ((House) services).setTypeOfRoom(input.nextLine());
             System.out.println("Enter other amenities:");
             ((House) services).setOtherAmenities(input.nextLine());
             System.out.println("Enter num of floor:");
-            ((House) services).setNumOfFloor(input.nextInt());
+            String numOfFloorStr = input.nextLine();
+            if (!isNum(numOfFloorStr)) {
+                while (!isNum(numOfFloorStr)) {
+                    System.out.println("Enter num of floor(Enter is Number):");
+                    numOfFloorStr = input.nextLine();
+                }
+            }
+            ((House) services).setNumOfFloor(Integer.parseInt(numOfFloorStr));
         } else if (services instanceof Room) {
-            input.nextLine();
             ServiceFree serviceFreeObj = new ServiceFree();
             System.out.println("Enter service free name (massage or karaoke or food or drink or car):");
             serviceFreeObj.setServiceFreeName(input.nextLine());
             System.out.println("Enter unit:");
-            serviceFreeObj.setUnit(input.nextInt());
+            String unitStr = input.nextLine();
+            if (!isNum(unitStr)) {
+                while (!isNum(unitStr)) {
+                    System.out.println("Enter unit(Enter is Number):");
+                    unitStr = input.nextLine();
+                }
+            }
+            serviceFreeObj.setUnit(Integer.parseInt(unitStr));
             System.out.println("Enter price:");
-            serviceFreeObj.setPrice(input.nextInt());
+            String priceStr = input.nextLine();
+            if (!isNum(priceStr)) {
+                while (!isNum(priceStr)) {
+                    System.out.println("Enter price(Enter is Number):");
+                    priceStr = input.nextLine();
+                }
+            }
+            serviceFreeObj.setPrice(Integer.parseInt(priceStr));
             ((Room) services).setServiceFreeObj(serviceFreeObj);
         }
     }
@@ -144,7 +199,7 @@ public class ServiceManager {
                     }
                     break;
                 case 6:
-                    ArrayList<Services> roomNotDup =WriteAndReadFileCSV.readFileRoom();
+                    ArrayList<Services> roomNotDup = WriteAndReadFileCSV.readFileRoom();
                     TreeSet<String> treeSetRoom = new TreeSet<String>();
                     for (Services services : roomNotDup) {
                         treeSetRoom.add(((Room) services).getServiceName());
@@ -187,7 +242,7 @@ public class ServiceManager {
         inputInstanceServices(houseObj);
         checkValue(houseObj);
         listServiceHouse.add(houseObj);
-        WriteAndReadFileCSV.writeFile(listStringHouse(listServiceHouse),ObjectFurama.HOUSE);
+        WriteAndReadFileCSV.writeFile(listStringHouse(listServiceHouse), ObjectFurama.HOUSE);
         System.out.println("successfully added");
     }
 
@@ -205,7 +260,7 @@ public class ServiceManager {
         inputInstanceServices(villaObj);
         checkValue(villaObj);
         listServiceVilla.add(villaObj);
-        WriteAndReadFileCSV.writeFile(listStringVilla(listServiceVilla),ObjectFurama.VILLA);
+        WriteAndReadFileCSV.writeFile(listStringVilla(listServiceVilla), ObjectFurama.VILLA);
         System.out.println("successfully added");
     }
 
@@ -216,6 +271,7 @@ public class ServiceManager {
         }
         return stringList;
     }
+
     static void checkValue(Services services) {
         Scanner input = new Scanner(System.in);
         boolean check = false;
@@ -356,5 +412,9 @@ public class ServiceManager {
             }
         }
 
+    }
+
+    public static Boolean isNum(String strNum) {
+        return strNum.matches("[0-9]+");
     }
 }

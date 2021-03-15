@@ -34,7 +34,7 @@ public class CustomerManager {
         System.out.println("Enter gender:");
         customer.setGender(input.nextLine());
         System.out.println("Enter id:");
-        customer.setId(input.nextInt());
+        customer.setId(input.nextLine());
         input.nextLine();
         System.out.println("Enter email:");
         customer.setEmail(input.nextLine());
@@ -117,9 +117,9 @@ public class CustomerManager {
         }
         check = false;
         while (!check) {
-            if (!Pattern.matches("[0-9]{9}$", Integer.toString(customer.getId()))) {
+            if (!Pattern.matches("[0-9]{9}$", customer.getId())) {
                 System.out.println("The Id Card must have 9 digits and be in the format XXX XXX XXX");
-                customer.setId(input.nextInt());
+                customer.setId(input.nextLine());
             } else {
                 check = true;
             }
