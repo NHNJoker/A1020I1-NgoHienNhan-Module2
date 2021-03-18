@@ -5,11 +5,12 @@ public class Employee {
     private String age;
     private String dateOfBirth;
     private String email;
-    private int id;
-    private int numOfPhone;
+    private String id;
+    private int employeeID;
+    private String numOfPhone;
     private String level;
     private String workPosition;
-    private int salary;
+    private double salary;
     private String addressOfEmployee;
 
     @Override
@@ -20,6 +21,7 @@ public class Employee {
                         dateOfBirth + ',' +
                         email + ',' +
                         id +','+
+                        employeeID+','+
                         numOfPhone +','+
                         level + ',' +
                         workPosition + ',' +
@@ -59,19 +61,19 @@ public class Employee {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getNumOfPhone() {
+    public String getNumOfPhone() {
         return numOfPhone;
     }
 
-    public void setNumOfPhone(int numOfPhone) {
+    public void setNumOfPhone(String  numOfPhone) {
         this.numOfPhone = numOfPhone;
     }
 
@@ -91,11 +93,11 @@ public class Employee {
         this.workPosition = workPosition;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -107,4 +109,11 @@ public class Employee {
         this.email = email;
     }
 
+    public Integer getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
+    }
 }

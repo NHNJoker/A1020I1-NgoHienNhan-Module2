@@ -137,12 +137,13 @@ public class WriteAndReadFileCSV {
             employee.setAge(splitData[1]);
             employee.setDateOfBirth(splitData[2]);
             employee.setEmail(splitData[3]);
-            employee.setId(Integer.parseInt(splitData[4]));
-            employee.setNumOfPhone(parseInt(splitData[5]));
-            employee.setLevel(splitData[6]);
-            employee.setWorkPosition(splitData[7]);
-            employee.setSalary(parseInt(splitData[8]));
-            employee.setAddressOfEmployee(splitData[9]);
+            employee.setId(splitData[4]);
+            employee.setEmployeeID(Integer.parseInt(splitData[5]));
+            employee.setNumOfPhone(splitData[6]);
+            employee.setLevel(splitData[7]);
+            employee.setWorkPosition(splitData[8]);
+            employee.setSalary(Double.parseDouble(splitData[9]));
+            employee.setAddressOfEmployee(splitData[10]);
             employeeArrayList.add(employee);
         }
         return employeeArrayList;

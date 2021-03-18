@@ -7,14 +7,15 @@ import models.Employee;
 import java.util.*;
 import java.util.regex.Pattern;
 
+import static common.WriteAndReadFileCSV.readFileEmployee;
+
 public class EmployeeManager {
     public static void displayEmployee() {
         HashMap<Integer, String> employeeHashMap = new HashMap<>();
-        ArrayList<models.Employee> employeeList = WriteAndReadFileCSV.readFileEmployee();
-        int key = 1;
+        ArrayList<models.Employee> employeeList = readFileEmployee();
+
         for (models.Employee employee : employeeList) {
-            employeeHashMap.put(key, String.valueOf(employee.toString()));
-            key = key + 1;
+            employeeHashMap.put(employee.getEmployeeID(), String.valueOf(employee.toString()));
         }
         for (String i : employeeHashMap.values()) {
             System.out.println(i);
@@ -43,9 +44,9 @@ public class EmployeeManager {
         }
         check = false;
         while (!check) {
-            if (!Pattern.matches("[0-9]{9}$", Integer.toString(employee.getId()))) {
+            if (!Pattern.matches("[0-9]{9}$", employee.getId())) {
                 System.out.println("The Id Card must have 9 digits and be in the format XXX XXX XXX");
-                employee.setId(input.nextInt());
+                employee.setId(input.nextLine());
             } else {
                 check = true;
             }
@@ -74,17 +75,22 @@ public class EmployeeManager {
     public static void addNewEmployee() {
         Scanner input = new Scanner(System.in);
         ArrayList<Employee> employeeArrayList = new ArrayList<Employee>();
-        for (int i = 1; i <= 10; i++) {
             Employee employee = new Employee();
             System.out.println("Enter name of employee:");
             employee.setNameOfEmployee(input.nextLine());
             System.out.println("Enter Date of birth:");
             employee.setDateOfBirth(input.nextLine());
             System.out.println("Enter id:");
-            employee.setId(input.nextInt());
+            employee.setId(input.nextLine());
+            System.out.println("Enter employee ID:");
+            String employeeIDStr = input.nextLine();
+            while (!isNum(employeeIDStr)) {
+                System.out.println("Enter employee ID (enter is number):");
+                employeeIDStr = input.nextLine();
+            }
+            employee.setEmployeeID(Integer.parseInt(employeeIDStr));
             System.out.println("Enter num of phone:");
-            employee.setNumOfPhone(input.nextInt());
-            input.nextLine();
+            employee.setNumOfPhone(input.nextLine());
             System.out.println("Enter Email:");
             employee.setEmail(input.nextLine());
             System.out.println("Enter level:\n" + "1.Intermediate\n" + "2.Colleges\n" + "3.University\n" +
@@ -138,14 +144,18 @@ public class EmployeeManager {
             employee.setAge(String.valueOf(Calendar.getInstance().get(Calendar.YEAR) -
                     Integer.parseInt(employee.getDateOfBirth().substring(6, 10))));
             employeeArrayList.add(employee);
-        }
         WriteAndReadFileCSV.writeFile(listStringEmployee(employeeArrayList), ObjectFurama.EMPLOYEE);
     }
+
     public static List<String> listStringEmployee(ArrayList<Employee> employeeArrayList) {
         List<String> stringList = new ArrayList<>();
         for (Employee employee : employeeArrayList) {
             stringList.add(employee.toString());
         }
         return stringList;
+    }
+
+    public static Boolean isNum(String strNum) {
+        return strNum.matches("[0-9]+");
     }
 }
